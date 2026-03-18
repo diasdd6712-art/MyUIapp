@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сәлем, Android!</title>
+    <title>Сәлем студент</title>
     <style>
         * {
             margin: 0;
@@ -12,177 +11,170 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .container {
-            background: white;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 100%;
             text-align: center;
-            max-width: 500px;
-            width: 90%;
         }
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            background: #3DDC84;
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 20px;
-            margin: 0 auto 20px;
+            margin: 0 auto 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .app-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
         }
 
         h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            animation: fadeIn 1s ease-in;
+            color: #1a1a1a;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
         .subtitle {
             color: #666;
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-        .code-editor {
-            background: #1e1e1e;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: left;
-            margin-top: 20px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .code-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .red { background: #ff5f56; }
-        .yellow { background: #ffbd2e; }
-        .green { background: #27c93f; }
-
-        .code-content {
-            color: #d4d4d4;
             font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .result-card {
+            margin-top: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .result-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .result-text {
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
             line-height: 1.6;
         }
 
-        .keyword { color: #569cd6; }
-        .string { color: #ce9178; }
-        .function { color: #dcdcaa; }
-        .comment { color: #6a9955; }
-
-        .run-btn {
-            background: #3DDC84;
+        .student-badge {
+            display: inline-block;
+            background: #667eea;
             color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1em;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 8px;
+            font-weight: 600;
         }
 
-        .run-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(61, 220, 132, 0.4);
+        /* Material ripple effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
         }
 
-        .output {
-            margin-top: 20px;
-            padding: 15px;
-            background: #f0f0f0;
-            border-radius: 10px;
-            border-left: 4px solid #3DDC84;
-            display: none;
+        .ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
         }
 
-        .output.show {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+        .ripple:active::after {
+            width: 300px;
+            height: 300px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">🤖</div>
-        <h1>Сәлем, Android!</h1>
-        <p class="subtitle">Бірінші қосымшаңызды жасау</p>
-        
-        <div class="code-editor">
-            <div class="code-header">
-                <div class="dot red"></div>
-                <div class="dot yellow"></div>
-                <div class="dot green"></div>
-            </div>
-            <div class="code-content">
-                <span class="keyword">public class</span> MainActivity {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">protected void</span> <span class="function">onCreate</span>() {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.<span class="function">out</span>.<span class="function">println</span>(<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Сәлем, Android!"</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                }
-            </div>
+        <div class="app-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+            </svg>
         </div>
-
-        <button class="run-btn" onclick="runCode()">▶ Іске қосу</button>
         
-        <div class="output" id="output">
-            <strong>Шығыс:</strong><br>
-            Сәлем, Android!
+        <h1>Қош келдіңіз!</h1>
+        <p class="subtitle">Бағдарламалау әлеміне саяхат</p>
+        
+        <button class="btn-primary ripple" onclick="showGreeting()">
+            Батырманы басыңыз
+        </button>
+        
+        <div id="result" class="result-card">
+            <p class="result-text">Сәлем - Сәлем студент!</p>
+            <span class="student-badge">🎓 Студент</span>
         </div>
     </div>
 
     <script>
-        function runCode() {
-            const output = document.getElementById('output');
-            const btn = document.querySelector('.run-btn');
+        function showGreeting() {
+            const result = document.getElementById('result');
+            result.classList.remove('show');
             
-            // Батырма анимациясы
-            btn.innerHTML = '⏳ Жүктелуде...';
-            btn.style.background = '#ffa500';
-            
+            // Кішкене кідіріспен анимацияны қайта іске қосу
             setTimeout(() => {
-                output.classList.add('show');
-                btn.innerHTML = '✓ Орындалды';
-                btn.style.background = '#3DDC84';
-                
-                // 2 секундтан кейін батырманы қайта қалпына келтіру
-                setTimeout(() => {
-                    btn.innerHTML = '▶ Іске қосу';
-                }, 2000);
-            }, 1000);
+                result.classList.add('show');
+            }, 100);
         }
     </script>
 </body>

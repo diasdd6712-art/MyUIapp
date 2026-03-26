@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тікелей форма - Linear Layout</title>
+    <title>3 Деңгей - Android UI</title>
     <style>
         * {
             margin: 0;
@@ -14,298 +14,236 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
         }
 
         .container {
-            background: #ffffff;
-            border-radius: 30px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 450px;
-            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 40px 30px;
+        h1 {
             text-align: center;
-            position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: white;
-            border-radius: 30px 30px 0 0;
-        }
-
-        .icon-circle {
-            width: 90px;
-            height: 90px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(255,255,255,0.3);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
-
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .header p {
-            opacity: 0.9;
-            font-size: 15px;
-        }
-
-        .form-area {
-            padding: 30px;
-        }
-
-        .input-group {
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        .input-group label {
-            display: block;
-            color: #555;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .input-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            opacity: 0.5;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 16px 16px 16px 50px;
-            border: 2px solid #e0e0e0;
-            border-radius: 16px;
-            font-size: 15px;
-            transition: all 0.3s;
-            background: #fafafa;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 20px;
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-
-        .toggle-password:hover {
-            opacity: 1;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .custom-checkbox {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .custom-checkbox.checked {
-            background: #667eea;
-            border-color: #667eea;
-        }
-
-        .custom-checkbox.checked::after {
-            content: '✓';
             color: white;
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .checkbox-label {
-            color: #555;
-            font-size: 14px;
-            cursor: pointer;
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
         }
 
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* === ЖЕҢІЛ ДЕҢГЕЙ === */
+        .level-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .level-header {
+            padding: 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .level-easy .level-header {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        }
+
+        .level-medium .level-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .level-hard .level-header {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .level-badge {
+            background: rgba(255,255,255,0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .level-content {
+            padding: 25px;
+        }
+
+        /* ЖЕҢІЛ: TextView + Button */
+        .simple-box {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .demo-text {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            border-left: 4px solid #84fab0;
+        }
+
+        .demo-btn {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
             color: white;
             border: none;
+            padding: 14px 32px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .demo-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ОРТА: 3 EditText + Button */
+        .form-medium input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-medium input:focus {
+            outline: none;
+            border-color: #f5576c;
+        }
+
+        .btn-medium {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* КҮРДЕЛІ: Login системасы */
+        .login-container {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             border-radius: 16px;
+            padding: 25px;
+            color: white;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 14px;
+        }
+
+        .login-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 10px;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            margin-top: 8px;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .submit-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .submit-btn:active::after {
-            width: 400px;
-            height: 400px;
-        }
-
-        /* ҚЫЗҒЫЛТ САРЫ НӘТИЖЕ */
-        .success-message {
+        /* Қызғылт сары нәтиже */
+        .success-result {
             background: linear-gradient(135deg, #FFD93D 0%, #FF6B6B 100%);
-            border-radius: 20px;
-            padding: 28px;
-            margin-top: 24px;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
             text-align: center;
             display: none;
-            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: popIn 0.5s ease;
         }
 
-        .success-message.show {
+        .success-result.show {
             display: block;
         }
 
         @keyframes popIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.8) translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        .success-icon {
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 50%;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-        }
-
-        .success-text {
-            font-size: 22px;
+        .success-title {
+            font-size: 20px;
             font-weight: 800;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
-        .success-subtext {
-            color: rgba(255,255,255,0.95);
-            font-size: 14px;
-            margin-top: 8px;
+        .success-icon-big {
+            font-size: 40px;
+            margin-bottom: 10px;
         }
 
         /* XML код бөлімі */
         .code-section {
+            margin-top: 20px;
             background: #1e1e1e;
-            border-radius: 20px;
-            padding: 24px;
-            margin-top: 24px;
+            border-radius: 12px;
+            padding: 16px;
         }
 
-        .code-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .code-badge {
-            background: #667eea;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .code-title {
-            color: #fff;
-            font-size: 14px;
+        .code-label {
+            color: #888;
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         pre {
             color: #d4d4d4;
             font-family: 'Courier New', monospace;
-            font-size: 13px;
-            line-height: 1.8;
+            font-size: 12px;
+            line-height: 1.6;
             overflow-x: auto;
         }
 
@@ -313,141 +251,195 @@
         .attr { color: #9cdcfe; }
         .value { color: #ce9178; }
         .comment { color: #6a9955; }
+        .keyword { color: #c586c0; }
 
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #ddd, transparent);
-            margin: 24px 0;
+        .error-msg {
+            color: #ff6b6b;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="icon-circle">📝</div>
-            <h1>Тікелей форма</h1>
-            <p>Linear Layout - тікелей орналасу</p>
-        </div>
+        <h1>📱 Android UI - 3 Деңгей</h1>
+        
+        <div class="levels-grid">
+            <!-- === ЖЕҢІЛ ДЕҢГЕЙ === -->
+            <div class="level-card level-easy">
+                <div class="level-header">
+                    <span>🌱</span>
+                    <span>ЖЕҢІЛ ДЕҢГЕЙ</span>
+                    <span class="level-badge">TextView + Button</span>
+                </div>
+                <div class="level-content">
+                    <div class="simple-box">
+                        <div class="demo-text" id="easyText">
+                            Сәлем, Android!
+                        </div>
+                        <button class="demo-btn" onclick="changeText()">
+                            Мәтінді өзгерту
+                        </button>
+                    </div>
 
-        <div class="form-area">
-            <!-- Атыңыз -->
-            <div class="input-group">
-                <label>Атыңыз</label>
-                <div class="input-wrapper">
-                    <span class="input-icon">👤</span>
-                    <input type="text" placeholder="Есіміңізді енгізіңіз" id="nameInput">
+                    <!-- Қызғылт сары нәтиже -->
+                    <div class="success-result" id="easyResult">
+                        <div class="success-icon-big">✨</div>
+                        <div class="success-title">TextView өзгерді!</div>
+                    </div>
+
+                    <div class="code-section">
+                        <div class="code-label">XML Layout</div>
+                        <pre><span class="tag">&lt;TextView</span>
+    android:id=<span class="value">"@+id/tvHello"</span>
+    android:text=<span class="value">"Сәлем!"</span>
+    android:layout_width=<span class="value">"wrap_content"</span>
+    android:layout_height=<span class="value">"wrap_content"</span> <span class="tag">/&gt;</span>
+
+<span class="tag">&lt;Button</span>
+    android:id=<span class="value">"@+id/btnClick"</span>
+    android:text=<span class="value">"Басу"</span>
+    android:layout_width=<span class="value">"wrap_content"</span>
+    android:layout_height=<span class="value">"wrap_content"</span> <span class="tag">/&gt;</span></pre>
+                    </div>
                 </div>
             </div>
 
-            <!-- Email -->
-            <div class="input-group">
-                <label>Email</label>
-                <div class="input-wrapper">
-                    <span class="input-icon">✉️</span>
-                    <input type="email" placeholder="email@example.com" id="emailInput">
+            <!-- === ОРТА ДЕҢГЕЙ === -->
+            <div class="level-card level-medium">
+                <div class="level-header">
+                    <span>⚡</span>
+                    <span>ОРТА ДЕҢГЕЙ</span>
+                    <span class="level-badge">3 EditText + Оқиға</span>
+                </div>
+                <div class="level-content">
+                    <div class="form-medium">
+                        <input type="text" id="nameInput" placeholder="👤 Атыңыз">
+                        <input type="email" id="emailInput" placeholder="✉️ Email">
+                        <input type="tel" id="phoneInput" placeholder="📱 Телефон">
+                        <button class="btn-medium" onclick="submitForm()">
+                            Жіберу →
+                        </button>
+                    </div>
+
+                    <!-- Қызғылт сары нәтиже -->
+                    <div class="success-result" id="mediumResult">
+                        <div class="success-icon-big">📋</div>
+                        <div class="success-title">Форма жіберілді!</div>
+                    </div>
+
+                    <div class="code-section">
+                        <div class="code-label">Java - Оқиға өңдеу</div>
+                        <pre><span class="comment">// Батырмаға оқиға қосу</span>
+btnSubmit.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="attr">@Override</span>
+    <span class="keyword">public void</span> onClick(View v) {
+        String name = etName.getText().toString();
+        String email = etEmail.getText().toString();
+        <span class="comment">// Деректерді өңдеу...</span>
+    }
+});</pre>
+                    </div>
                 </div>
             </div>
 
-            <!-- Құпия сөз -->
-            <div class="input-group">
-                <label>Құпия сөз</label>
-                <div class="input-wrapper">
-                    <span class="input-icon">🔒</span>
-                    <input type="password" placeholder="••••••••" id="passwordInput">
-                    <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            <!-- === КҮРДЕЛІ ДЕҢГЕЙ === -->
+            <div class="level-card level-hard">
+                <div class="level-header">
+                    <span>🔥</span>
+                    <span>КҮРДЕЛІ ДЕҢГЕЙ</span>
+                    <span class="level-badge">Login + Тексеру</span>
                 </div>
-            </div>
+                <div class="level-content">
+                    <div class="login-container">
+                        <div class="login-header">
+                            <div class="login-icon">🔐</div>
+                            <h3>Кіру</h3>
+                        </div>
+                        <input type="text" class="login-input" id="loginUser" placeholder="Қолданушы аты">
+                        <input type="password" class="login-input" id="loginPass" placeholder="Құпия сөз">
+                        <button class="btn-login" onclick="checkLogin()">
+                            Кіру →
+                        </button>
+                        <div class="error-msg" id="errorMsg">
+                            ❌ Логин немесе пароль дұрыс емес!
+                        </div>
+                    </div>
 
-            <!-- Checkbox -->
-            <div class="checkbox-group" onclick="toggleCheckbox()">
-                <div class="custom-checkbox" id="customCheckbox"></div>
-                <span class="checkbox-label">Шарттармен келісемін</span>
-            </div>
+                    <!-- Қызғылт сары нәтиже -->
+                    <div class="success-result" id="hardResult">
+                        <div class="success-icon-big">🎉</div>
+                        <div class="success-title">Қош келдіңіз!</div>
+                        <div style="color: white; opacity: 0.9; font-size: 13px; margin-top: 8px;">
+                            Жүйеге сәтті кірдіңіз
+                        </div>
+                    </div>
 
-            <!-- Батырма -->
-            <button class="submit-btn" onclick="submitForm()">
-                Тіркелу →
-            </button>
-
-            <!-- Қызғылт сары нәтиже -->
-            <div class="success-message" id="successMessage">
-                <div class="success-icon">🎉</div>
-                <div class="success-text">Сәтті тіркелді!</div>
-                <div class="success-subtext">Linear Layout форма жұмыс істейді</div>
-            </div>
-
-            <div class="divider"></div>
-
-            <!-- XML коды -->
-            <div class="code-section">
-                <div class="code-header">
-                    <span class="code-badge">XML</span>
-                    <span class="code-title">activity_main.xml</span>
+                    <div class="code-section">
+                        <div class="code-label">Java - Тексеру логикасы</div>
+                        <pre><span class="comment">// Логин + Пароль тексеру</span>
+<span class="keyword">if</span> (username.equals(<span class="value">"admin"</span>) && 
+    password.equals(<span class="value">"1234"</span>)) {
+    <span class="comment">// Дұрыс - Қош келдіңіз!</span>
+    tvResult.setText(<span class="value">"Қош келдіңіз!"</span>);
+} <span class="keyword">else</span> {
+    <span class="comment">// Қате - Қате хабарлама</span>
+    tvResult.setText(<span class="value">"Дұрыс емес!"</span>);
+}</pre>
+                    </div>
                 </div>
-                <pre><span class="tag">&lt;LinearLayout</span>
-    xmlns:android=<span class="value">"http://schemas.android.com/apk/res/android"</span>
-    android:layout_width=<span class="value">"match_parent"</span>
-    android:layout_height=<span class="value">"match_parent"</span>
-    android:orientation=<span class="value">"vertical"</span>
-    android:padding=<span class="value">"24dp"</span><span class="tag">&gt;</span>
-
-    <span class="comment">&lt;!-- Тікелей орналасқан элементтер --&gt;</span>
-    
-    <span class="tag">&lt;EditText</span>
-        android:id=<span class="value">"@+id/etName"</span>
-        android:layout_width=<span class="value">"match_parent"</span>
-        android:layout_height=<span class="value">"wrap_content"</span>
-        android:hint=<span class="value">"Атыңыз"</span> <span class="tag">/&gt;</span>
-
-    <span class="tag">&lt;EditText</span>
-        android:id=<span class="value">"@+id/etEmail"</span>
-        android:layout_width=<span class="value">"match_parent"</span>
-        android:layout_height=<span class="value">"wrap_content"</span>
-        android:hint=<span class="value">"Email"</span> <span class="tag">/&gt;</span>
-
-    <span class="tag">&lt;Button</span>
-        android:id=<span class="value">"@+id/btnSubmit"</span>
-        android:layout_width=<span class="value">"match_parent"</span>
-        android:layout_height=<span class="value">"wrap_content"</span>
-        android:text=<span class="value">"Тіркелу"</span> <span class="tag">/&gt;</span>
-
-<span class="tag">&lt;/LinearLayout&gt;</span></pre>
             </div>
         </div>
     </div>
 
     <script>
-        function togglePassword() {
-            const input = document.getElementById('passwordInput');
-            const toggle = document.querySelector('.toggle-password');
+        // ЖЕҢІЛ: TextView өзгерту
+        function changeText() {
+            const texts = ["Сәлем, Android!", "Hello, World!", "Қош келдіңіз!", "Java + XML"];
+            const current = document.getElementById('easyText').textContent;
+            const next = texts[(texts.indexOf(current) + 1) % texts.length];
+            document.getElementById('easyText').textContent = next;
             
-            if (input.type === 'password') {
-                input.type = 'text';
-                toggle.textContent = '🙈';
-            } else {
-                input.type = 'password';
-                toggle.textContent = '👁️';
-            }
+            document.getElementById('easyResult').classList.add('show');
+            setTimeout(() => {
+                document.getElementById('easyResult').classList.remove('show');
+            }, 2000);
         }
 
-        function toggleCheckbox() {
-            const checkbox = document.getElementById('customCheckbox');
-            checkbox.classList.toggle('checked');
-        }
-
+        // ОРТА: Форма жіберу
         function submitForm() {
             const name = document.getElementById('nameInput').value;
             const email = document.getElementById('emailInput').value;
-            const checkbox = document.getElementById('customCheckbox').classList.contains('checked');
+            const phone = document.getElementById('phoneInput').value;
             
-            if (name && email && checkbox) {
-                document.getElementById('successMessage').classList.add('show');
-                
+            if (name && email && phone) {
+                document.getElementById('mediumResult').classList.add('show');
                 setTimeout(() => {
-                    document.getElementById('successMessage').classList.remove('show');
+                    document.getElementById('mediumResult').classList.remove('show');
                 }, 3000);
             } else {
                 alert('Барлық өрісті толтырыңыз!');
+            }
+        }
+
+        // КҮРДЕЛІ: Login тексеру
+        function checkLogin() {
+            const user = document.getElementById('loginUser').value;
+            const pass = document.getElementById('loginPass').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const successResult = document.getElementById('hardResult');
+            
+            // Дұрыс логин: admin, пароль: 1234
+            if (user === 'admin' && pass === '1234') {
+                errorMsg.style.display = 'none';
+                successResult.classList.add('show');
+                setTimeout(() => {
+                    successResult.classList.remove('show');
+                }, 4000);
+            } else {
+                errorMsg.style.display = 'block';
+                successResult.classList.remove('show');
             }
         }
     </script>
